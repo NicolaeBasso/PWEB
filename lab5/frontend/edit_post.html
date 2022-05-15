@@ -1,0 +1,59 @@
+{% extends "header.html" %}
+{##}
+{#{% block content %}#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col-md-12">#}
+{#                <h1>Edit Post</h1>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-md-12">#}
+{#                <form action="/update/{{ post.id }}/" method="post">#}
+{#                {% csrf_token %}#}
+{#                    <div class="form-group">#}
+{#                        <label for="title">Title</label>#}
+{#                        <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}">#}
+{#                    </div>#}
+{#                    <div class="form-group">#}
+{#                        <label for="content">Content</label>#}
+{#                        <textarea class="form-control" id="body" name="body"#}
+{#                                  rows="10">{{ post.body }}</textarea>#}
+{#                    </div>#}
+{#                    <div class="form-group">#}
+{#                        <input type="checkbox" name="is_public" id="is_public" value="1"#}
+{#                               {% if post.is_public %}checked{% endif %}>#}
+{#                        <label for="is_public">Is public?</label>#}
+{#                    </div>#}
+{#                    <button type="submit" class="btn btn-default">Update</button>#}
+{##}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+{#<button onclick="window.location.href='/post/{{ post.id }}'">Go back</button>#}
+
+
+
+{% block content %}
+    {% load crispy_forms_tags %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Edit Post</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ update_form|crispy }}
+                    <button type="submit" class="btn btn-default">Update</button>
+                    <button type="button" onclick="window.location.href='{% url 'index' %}'">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

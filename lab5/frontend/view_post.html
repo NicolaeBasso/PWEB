@@ -1,0 +1,25 @@
+{% extends "header.html" %}
+
+{% block content %}
+    {% if post %}
+        <h2>This post is
+            {% if post.is_public %}
+                public.
+            {% else %}
+                private.
+            {% endif %}
+        </h2>
+        <h1>Title: {{ post.title }}</h1>
+        <h2>Author: <a href="{% url 'profile' post.author.id %}">{{ post.author }}</a></h2>
+        <h3>Publication date: {{ post.pub_date|date:"F j, Y, g:i a" }}</h3>
+        <p>{{ post.content }}</p>
+    {% else %}
+        <p>Post not found.</p>
+    {% endif %}
+    <button onclick="window.location.href='{% url 'index' %}'">Go back</button>
+    {% if is_editor %}
+        <button onclick="window.location.href='{% url 'edit_post' post.id %}'">Edit</button>
+        <button onclick="window.location.href='{% url 'delete_post' post.id %}'">Delete</button>
+    {% endif %}
+
+{% endblock %}

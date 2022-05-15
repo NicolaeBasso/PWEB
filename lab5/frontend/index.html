@@ -1,0 +1,40 @@
+{% extends "header.html" %}
+{% block content %}
+    {#View private posts#}
+    {% if private_posts %}
+        <h2>Private Posts</h2>
+        <ul>
+            {% for post in private_posts %}
+                <li>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> (Author: <a
+                        href="{% url 'profile' post.author.id %}">{{ post.author }}</a>)
+                {% if post.is_protected %}
+                    <span class="label label-danger">Protected</span>
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {#View public posts#}
+    {% if posts %}
+        <h1>Public Post List</h1>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> (Author: <a
+                        href="{% url 'profile' post.author.id %}">{{ post.author }}</a>)
+                {% if post.is_protected %}
+                    <span class="label label-danger">Protected</span>
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no posts in the library.</p>
+    {% endif %}
+    {% if user %}
+        <button onclick="window.location.href='{% url 'add_post' %}'">Add Post</button>
+    {% else %}
+        <button onclick="window.location.href='{% url 'login' %}'">Login to add new post</button>
+    {% endif %}
+{% endblock content %}

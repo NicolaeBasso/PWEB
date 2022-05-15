@@ -1,0 +1,23 @@
+{% extends "header.html" %}
+
+{% block content %}
+    {% load crispy_forms_tags %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Create Post</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ add_form|crispy }}
+                    <button type="submit" class="btn btn-default">Create</button>
+                    <button type="button" onclick="window.location.href='{% url 'index' %}'">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

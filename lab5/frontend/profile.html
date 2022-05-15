@@ -1,0 +1,48 @@
+{% extends "header.html" %}
+
+{% block content %}
+    <h1>Profile of: {{ requested_user.username }}</h1>
+    <p>{{ requested_user.email }}</p>
+    <p>{{ requested_user.created_at }}</p>
+
+    {% if posts %}
+        <h2>Public posts of {{ requested_user.username }}</h2>
+    {% else %}
+        <h2>No public posts of {{ requested_user.username }}</h2>
+    {% endif %}
+    {#Display the posts that the requested_user has made.#}
+    {% for post in posts %}
+        <li>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> (Author: <a
+                href="{% url 'profile' post.author.id %}">{{ post.author }}</a>)
+            {% if post.is_protected %}
+                <span class="label label-danger">Protected</span>
+            {% endif %}
+        </li>
+    {% endfor %}
+
+    {% if is_user_subscriber %}
+        <h2>You are a subscriber!</h2>
+        <h2>Subsriber only posts:</h2>
+        {% for post in subscribed_posts %}
+            <li>
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> (Author: <a
+                    href="{% url 'profile' post.author.id %}">{{ post.author }}</a>)
+                {% if post.is_protected %}
+                    <span class="label label-danger">Protected</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+        {% if requested_user.id != user.id %}
+            <button type="button" onclick="window.location.href='{% url 'unsubscribe' requested_user.id %}'">Unsubscribe
+            </button>
+        {% endif %}
+
+    {% else %}
+        <button type="button" onclick="window.location.href='{% url 'subscribe' requested_user.id %}'">Subscribe
+        </button>
+    {% endif %}
+
+
+{% endblock %}
+
