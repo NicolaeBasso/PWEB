@@ -1,5 +1,3 @@
-const { Prisma } = require('@prisma/client');
-
 const users = [
   {
     name: 'Admin',
@@ -21,18 +19,6 @@ const users = [
   },
 ];
 
-const roles = [
-  {
-    role: "publisher"
-  },
-  {
-    role: "user"
-  },
-  {
-    role: "none"
-  },
-];
-
 const games = [
   {
     name: 'Battlefield 4',
@@ -51,19 +37,20 @@ const games = [
 const apps = [
   {
     name: 'Google Lens',
+    category: 'Photography',
     description: "Google Lens is an image recognition technology developed by Google, designed to bring up relevant information related to objects it identifies using visual analysis based on a neural network.",
     creator: "Google"
   },
   {
-    name: 'Baldur\'s Gate 3',
-    description: "4321",
-    creator: "Larian Studios"
+    name: 'Sleep Monitor',
+    category: 'Health',
+    description: "Sleep Monitor helps you track and record sleep cycle details. Sleep Monitor also has a smart alarm clock to remind you to sleep early at night and wake you up gently in the morning. In addition, Sleep Monitor provides relaxing sleep music to help you sleep better.",
+    creator: "SM Health Team"
   },
 ];
 
 module.exports = {
   users,
-  roles,
   games,
   apps
 };

@@ -1,5 +1,5 @@
 export const roles = {
-  publisher: "publisher",
-  user: "user",
-  none: "none"
+  publisher: "1",
+  user: "2",
+  none: "3"
 }

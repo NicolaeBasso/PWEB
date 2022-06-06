@@ -20,22 +20,18 @@ model User {
   apps          String[]
 }
 
-model Role {
-  id            String      @default(cuid()) @id
-  role          String      @unique @default("none")
-}
-
 model Game {
   id            String      @default(cuid()) @id
   name          String      @unique
-  genre         String      
-  description   String     
-  creator       String       
+  genre         String?      
+  description   String?     
+  creator       String?       
 }
 
 model App {
   id            String      @default(cuid()) @id
   name          String      @unique
-  description   String     
-  creator       String
+  category      String?      
+  description   String?     
+  creator       String?
 }

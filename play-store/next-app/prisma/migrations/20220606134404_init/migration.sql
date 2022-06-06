@@ -12,20 +12,12 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Role" (
-    "id" TEXT NOT NULL,
-    "role" TEXT NOT NULL DEFAULT E'none',
-
-    CONSTRAINT "Role_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "Game" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "genre" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
-    "creator" TEXT NOT NULL,
+    "genre" TEXT,
+    "description" TEXT,
+    "creator" TEXT,
 
     CONSTRAINT "Game_pkey" PRIMARY KEY ("id")
 );
@@ -34,17 +26,15 @@ CREATE TABLE "Game" (
 CREATE TABLE "App" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
-    "creator" TEXT NOT NULL,
+    "genre" TEXT,
+    "description" TEXT,
+    "creator" TEXT,
 
     CONSTRAINT "App_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Role_role_key" ON "Role"("role");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Game_name_key" ON "Game"("name");
