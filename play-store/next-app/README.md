@@ -2,7 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+### Fill in .env file in accordance to .env.example, GOOGLE_ID & GOOGLE_SECRET are to be taken from Google Cloud Platform console, so you'll have to register a web project there, and specify:
+- Authorised JavaScript origins => http://localhost
+- Authorised redirect URIs => http://localhost:3000/api/auth/callback/google, http://localhost:3000/api/auth/callback/google
+
+After than, you can run the development server:
 
 ```bash
 npm run dev
