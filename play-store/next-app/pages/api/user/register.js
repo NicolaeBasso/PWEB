@@ -1,23 +1,25 @@
 import prisma from "../../../lib/prisma"
 
-export default async function handle(req, res) {  
-  const {email, password} = req.body
+export default async function handle(req, res) {
+  const { email, password } = req.body
 
-  if(req.method === 'POST') {
+  if (req.method === 'POST') {
     const user = await prisma.user.findFirst({
       where: {
         email,
       }
     })
 
-    if(!user) {
+    if (!user) {
       prisma.user.create({
-        email,
-        password
+        data: {
+          email,
+          password
+        }
       })
 
       res.status(201).json("Created")
-    } else  
+    } else
       res.status(400).send("Email already taken")
   }
 }

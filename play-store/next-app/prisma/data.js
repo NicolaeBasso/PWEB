@@ -24,13 +24,15 @@ const games = [
     name: 'Battlefield 4',
     genre: 'FPS',
     description: "Battlefield 4 is a 2013 first-person shooter video game developed by DICE and published by Electronic Arts.",
-    creator: "DICE"
+    creator: "DICE",
+    url: "https://store.steampowered.com/app/1238860/Battlefield_4/"
   },
   {
     name: 'Baldur\'s Gate 3',
     genre: 'RPG',
     description: "Baldur's Gate III is an upcoming role-playing video game that is being developed and published by Larian Studios. It is the third main game in the Baldur's Gate series, itself based on the Dungeons & Dragons tabletop role-playing system.",
-    creator: "Larian Studios"
+    creator: "Larian Studios",
+    url: "https://store.steampowered.com/app/1086940/Baldurs_Gate_3/"
   },
 ];
 
@@ -39,13 +41,15 @@ const apps = [
     name: 'Google Lens',
     category: 'Photography',
     description: "Google Lens is an image recognition technology developed by Google, designed to bring up relevant information related to objects it identifies using visual analysis based on a neural network.",
-    creator: "Google"
+    creator: "Google",
+    url: "https://lens.google/"
   },
   {
     name: 'Sleep Monitor',
     category: 'Health',
     description: "Sleep Monitor helps you track and record sleep cycle details. Sleep Monitor also has a smart alarm clock to remind you to sleep early at night and wake you up gently in the morning. In addition, Sleep Monitor provides relaxing sleep music to help you sleep better.",
-    creator: "SM Health Team"
+    creator: "SM Health Team",
+    url: "https://play.google.com/store/apps/details?id=com.sleepmonitor.aio&hl=en&gl=US"
   },
 ];
 

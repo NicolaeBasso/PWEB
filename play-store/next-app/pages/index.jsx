@@ -1,10 +1,19 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { signIn, signOut, useSession } from 'next-auth/react';
-// import { Store } from '../src/components/Store'
+import { useSession } from "next-auth/react"
+import { useEffect } from "react"
+import { Store } from '../src/components/Store'
 import { Login } from "../src/components/LoginButton";
 
 export default function Home() {
+  const { data: session } = useSession()
+
+  useEffect(() => {
+    console.log(session)
+  }, [session])
+
+  console.log({ session })
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,14 +23,6 @@ export default function Home() {
       </Head>
 
       <Login />
-
-      {/* {!session && (
-        <>
-          <button className={styles.primaryButton} onClick={() => signIn()}>
-            Sign In
-          </button>
-        </>
-      )}
 
       {session && (
         <>
@@ -35,14 +36,10 @@ export default function Home() {
               </span>
             )}
           </div>
-          <br />
-          <br />
-          <button className={styles.primaryButton} onClick={() => signOut()}>
-            Sign Out
-          </button>
+
           <Store />
         </>
-      )} */}
+      )}
     </div>
   )
 }

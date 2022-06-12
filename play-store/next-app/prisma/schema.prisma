@@ -25,7 +25,8 @@ model Game {
   name          String      @unique
   genre         String?      
   description   String?     
-  creator       String?       
+  creator       String?   
+  url           String?          
 }
 
 model App {
@@ -34,4 +35,5 @@ model App {
   category      String?      
   description   String?     
   creator       String?
+  url           String?
 }
