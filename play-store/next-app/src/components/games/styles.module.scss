@@ -1,0 +1,17 @@
+.games {
+  margin: 50px;
+
+  .game {
+    padding: 30px 50px;
+    border-radius: 3px;
+    outline-offset: 8px;
+    outline: 2px solid gray;
+    margin-bottom: 50px;
+
+    a {
+      color:darkblue;
+      font-weight: bold;
+      font-weight: 800;
+    }
+  }
+}

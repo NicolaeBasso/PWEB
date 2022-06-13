@@ -1,16 +1,16 @@
 import prisma from "../../../lib/prisma"
 
-export default async function handle(req, res) {  
-  const {id, name, category, description, creator} = req.body
+export default async function handle(req, res) {
+  const { id, name, category, description, creator } = req.body
 
-  if(req.method === 'PUT') {
+  if (req.method === 'PUT') {
     const app = await prisma.app.findUnique({
       where: {
         id
       }
     })
 
-    if(!app) {
+    if (!app) {
       res.status(400).send("Such app does not exist")
     } else {
       const appUpdated = await prisma.app.update({

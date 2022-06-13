@@ -1,13 +1,20 @@
-import { API_URL } from "../src/constants/index";
+import { API_URL } from "../src/constants/index"
+import { NavBar } from "../src/components/NavBar"
+import { Apps } from "../src/components/apps/Apps"
 
-function Apps({ data }) {
+function AppsPage({ data }) {
   console.log("data = ", data);
+
+  return (
+    <div>
+      <NavBar />
+      <Apps apps={data} />
+    </div>)
 }
 
-export default Apps;
+export default AppsPage;
 
 export const getServerSideProps = async (context) => {
-  // Fetch data from external API
   const res = await fetch(`${API_URL}/app/all`, {
     method: 'GET',
     credentials: "include",
@@ -18,9 +25,7 @@ export const getServerSideProps = async (context) => {
   });
   const data = await res.json()
 
-  console.log("Data in Apps server side props = ", data);
-
   return {
-    props: { data }, // will be passed to the page component as props
+    props: { data }
   }
 }

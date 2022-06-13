@@ -1,9 +1,9 @@
+import { useSession, signIn, signOut } from "next-auth/react"
+
 export const Login = () => {
+  signIn();
+
   return (
-    <div>
-      <h1>Login</h1>
-      <input />
-      <input />
-    </div>
+    <>Login</>
   )
 }
